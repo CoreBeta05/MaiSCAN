@@ -28,13 +28,12 @@ class _MyStatefulWidgetState extends State<details> {
             List<String> className = [
             'Army_worm',
             'Corn_borer',
-            'Corn_Hopper',
             'Cut_worm',
             'Ear_worm',
             'No_pest',
             'Seedling_maggot',
             'Semi_looper',
-            'Stink_bugs',
+            'Stink_bug',
             'White_grub'
       ];
       switch(widget.index){
@@ -226,56 +225,9 @@ class _MyStatefulWidgetState extends State<details> {
     ],
   );
         }
+
         break;
         case 2:{
-    // Load the image using AssetImage
-         final Image image = Image.asset('assets/cornh.png'); 
-         final Image damage = Image.asset('assets/cornhdam.png');// Replace with your image path
-            info = Column(
-             children: [
-       Text(
-        "\n CORN HOPPER(Stenocranus pacificu)\n Local Names: Sip-sip, Bunhok.",
-        style: commonTextStyle,
-      ),
-      // Display the image
-      Container(
-        width: 250, // Adjust the width as needed
-        height: 250, // Adjust the height as needed
-        child: image,
-      ),
-      Text("\n Control Management:",
-        style: commonTextStyle,
-      ),
-      Text("a. Eliminate weeds which serve as alternate hosts of the corn plant hopper.\n b. If Irrigation is available, regular irrigation can help replenish the corn sap sucked by the corn plant hopper.\n c. Increase planting distance to facilitate light penetration within the micro- environment of the crop.\n d. Follow recommended fertilizer application and split application of Nitrogen fertilizer.\n e. Practice fallow period of 2-3 months if crop rotation is not possible to break the life cycle of the plant hoppers.\n f. Plow under corn stubbles or plant debris immediately after harvest to kill remaining eggs, nymphs and adults. \n"),
-      Text("\n Associated damages: ",
-        style: commonTextStyle,
-      ),
-      Text("They stock plant juices from young leaves and leaf sheaths which can lead to stunted plant growth in severe cases, The formation of droplets of honeydews in leaves and thier toxins may cause galls among the viens and undereath leaf surface that resulted in lose of plant vigor. "),
-            Container(
-        width: 250, // Adjust the width as needed
-        height: 250, // Adjust the height as needed
-        child: damage,
-        ),
-      Text(" References: Regional Crop Protection Center Caraga                      "),
-      GestureDetector(
-  onTap: () {
-    const url = 'https://car.da.gov.ph/2023/06/01/common-insect-pest-and-diseases-of-corn/'; // Replace with your website URL
-    launch(url);
-  },
-  child: Text(
-    'Department of Agriculture. Common Insect Pest and Diseases of\n Corn. ',
-    style: TextStyle(
-      color: Colors.blue, // Change the text color to blue
-      decoration: TextDecoration.underline, // Add underline to the text
-    ),
-  ),
-),
-    ],
-  );
-        }
-        break;
-        case 3:{
-    // Load the image using AssetImage
          final Image image = Image.asset('assets/cutw.png'); 
          final Image damage = Image.asset('assets/cutwdam.png');// Replace with your image path
             info = Column(
@@ -368,7 +320,7 @@ class _MyStatefulWidgetState extends State<details> {
   );
         }
         break;
-        case 4:{
+        case 3:{
     // Load the image using AssetImage
          final Image image = Image.asset('assets/earw.png'); 
          final Image damage = Image.asset('assets/earwdam.png');// Replace with your image path
@@ -451,7 +403,7 @@ class _MyStatefulWidgetState extends State<details> {
   );
         }
         break;
-        case 5:{
+        case 4:{
     // Load the image using AssetImage
          final Image image = Image.asset('assets/nopest.png'); 
             info = Column(
@@ -484,7 +436,7 @@ class _MyStatefulWidgetState extends State<details> {
   );
         }
         break;        
-        case 6:{
+        case 5:{
     // Load the image using AssetImage
          final Image image = Image.asset('assets/seedm.png'); 
          final Image damage = Image.asset('assets/seedmdam.png');// Replace with your image path
@@ -590,7 +542,7 @@ class _MyStatefulWidgetState extends State<details> {
   );
         }
         break;
-        case 7:{
+        case 6:{
     // Load the image using AssetImage
          final Image image = Image.asset('assets/semil.png'); 
          final Image damage = Image.asset('assets/semildam.png');// Replace with your image path
@@ -684,7 +636,7 @@ class _MyStatefulWidgetState extends State<details> {
   );
         }
         break;
-        case 8:{
+        case 7:{
     // Load the image using AssetImage
          final Image image = Image.asset('assets/sbugs.png'); 
          final Image damage = Image.asset('assets/sbugsdam.png');// Replace with your image path

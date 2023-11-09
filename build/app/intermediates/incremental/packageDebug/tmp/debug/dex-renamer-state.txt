@@ -1,4 +1,4 @@
-#Thu Nov 09 00:05:07 PST 2023
+#Fri Nov 10 01:28:53 PST 2023
 base.0=/home/prince/Documents/flutter_project/MaiSCAN/build/app/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 base.1=/home/prince/Documents/flutter_project/MaiSCAN/build/app/intermediates/dex/debug/mergeLibDexDebug/0/classes.dex
 base.2=/home/prince/Documents/flutter_project/MaiSCAN/build/app/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex

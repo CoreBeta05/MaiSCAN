@@ -56,7 +56,7 @@ class _state extends State<HomePage> {
 
   loadModel() async {
     try {
-      interpreter = await Interpreter.fromAsset('assets/dType.tflite');
+      interpreter = await Interpreter.fromAsset('assets/model.tflite');
 
       debugPrint("Assets loaded!");
     } catch (e) {
@@ -105,7 +105,7 @@ class _state extends State<HomePage> {
       );
 
       final input = [imageMatrix];
-      final output = [List<double>.filled(10, 0)];
+      final output = [List<double>.filled(9, 0)];
       interpreter.run(input, output);
       setState(() {
         value = output.first;
@@ -113,13 +113,12 @@ class _state extends State<HomePage> {
         List<String> className = [
             'Army_worm',
             'Corn_borer',
-            'Corn_Hopper',
             'Cut_worm',
             'Ear_worm',
             'No_pest',
             'Seedling_maggot',
             'Semi_looper',
-            'Stink_bugs',
+            'Stink_bug',
             'White_grub'
         ];
         for (int i = 0; i < value.length; i++) {

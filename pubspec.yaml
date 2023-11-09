@@ -61,7 +61,7 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/dType.tflite
+    - assets/model.tflite
     - assets/corn.jpg
     - assets/aworm.png
     - assets/armydamage.png

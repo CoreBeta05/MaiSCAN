@@ -21,13 +21,12 @@ class _ReportState extends State<Report> {
       List<String> className = [
         'Army_worm',
         'Corn_borer',
-        'Corn_Hopper',
         'Cut_worm',
         'Ear_worm',
         'No_pest',
         'Seedling_maggot',
         'Semi_looper',
-        'Stink_bugs',
+        'Stink_bug',
         'White_grub'
       ];
       double base_val = widget.value[0];

@@ -1,4 +1,4 @@
-#Thu Nov 09 01:00:02 PST 2023
+#Fri Nov 10 02:08:58 PST 2023
 base.0=/home/prince/Documents/flutter_project/MaiSCAN/build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
