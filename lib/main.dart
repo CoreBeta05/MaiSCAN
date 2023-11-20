@@ -1,3 +1,4 @@
+import 'package:MaisControl/IntroPanel.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:tflite_flutter/tflite_flutter.dart';
@@ -5,7 +6,6 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:image/image.dart' as img;
 import 'package:MaisControl/report.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +21,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Identify Pest',
       theme: ThemeData(primarySwatch: Colors.green),
-      home: HomePage(cameras: cameras),
+      routes: {
+        '/intro': (context) => IntroPanel(),
+        '/main': (context) => HomePage(
+              cameras: cameras,
+            ),
+      },
+      initialRoute: '/intro',
     );
   }
 }
@@ -43,7 +49,6 @@ class _state extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    debugPrint('[initState] Initiliazation');
 
     camController = CameraController(
       widget.cameras[0],
@@ -57,11 +62,7 @@ class _state extends State<HomePage> {
   loadModel() async {
     try {
       interpreter = await Interpreter.fromAsset('assets/model.tflite');
-
-      debugPrint("Assets loaded!");
-    } catch (e) {
-      debugPrint("ERROR loading assets: $e");
-    }
+    } catch (e) {}
   }
 
   Future<void> captureImage() async {
@@ -70,7 +71,7 @@ class _state extends State<HomePage> {
       imagePath = image.path;
       await predict(image.path);
     } catch (e) {
-      debugPrint('Error Occured!: $e');
+      debugPrint('error: $e');
     }
   }
 
@@ -111,15 +112,15 @@ class _state extends State<HomePage> {
         value = output.first;
         combinedText = "";
         List<String> className = [
-            'Army_worm',
-            'Corn_borer',
-            'Cut_worm',
-            'Ear_worm',
-            'No_pest',
-            'Seedling_maggot',
-            'Semi_looper',
-            'Stink_bug',
-            'White_grub'
+          'Army_worm',
+          'Corn_borer',
+          'Cut_worm',
+          'Ear_worm',
+          'No_pest',
+          'Seedling_maggot',
+          'Semi_looper',
+          'Stink_bug',
+          'White_grub'
         ];
         for (int i = 0; i < value.length; i++) {
           combinedText += "${className[i]} : ${value[i]}\n";
@@ -196,7 +197,6 @@ class _state extends State<HomePage> {
                     ],
                   ),
                 ),
-                
               ],
             );
           } else {

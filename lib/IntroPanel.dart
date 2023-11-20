@@ -1,11 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:MaisControl/main.dart';
-
-void main() {
-  runApp(MaterialApp(
-    home: IntroPanel(),
-  ));
-}
 
 class IntroPanel extends StatelessWidget {
   @override
@@ -14,7 +7,6 @@ class IntroPanel extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text('Welcome to MaisControl app'),
-          home: IntroPanel(),
         ),
         body: Center(
           child: Column(
@@ -33,17 +25,12 @@ class IntroPanel extends StatelessWidget {
                 style: TextStyle(fontSize: 16),
               ),
               SizedBox(height: 20),
-ElevatedButton(
-  onPressed: () {
-    // Navigate to the main app
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => MyApp(cameras: cameras)),
-    );
-  },
-  child: Text('Start App'),
-),
-
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/main');
+                },
+                child: Text('Start App'),
+              ),
             ],
           ),
         ),
