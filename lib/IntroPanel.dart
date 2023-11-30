@@ -6,7 +6,8 @@ class IntroPanel extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Welcome to MaisControl app'),
+          title: Text('MaisControl'),
+          backgroundColor: Colors.green, // Change app bar color to green
         ),
         body: Center(
           child: Column(
@@ -21,14 +22,21 @@ class IntroPanel extends StatelessWidget {
               ),
               SizedBox(height: 20),
               Text(
-                'Disclaimer!\n    This app is not designed for identifying undefined objects but\nrather specializes in identifying corn pests.\nClick the button below to start the app:',
-                style: TextStyle(fontSize: 16),
+                'Disclaimer!\n    This app is not designed for identifying undefined\n objects but rather specializes in identifying corn pests.',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.red, // Change text color to red
+                ),
+                textAlign: TextAlign.center,
               ),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/main');
                 },
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.green, // Change button color to green
+                ),
                 child: Text('Start App'),
               ),
             ],
