@@ -1,4 +1,4 @@
-import 'package:MaisControl/IntroPanel.dart';
+
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:tflite_flutter/tflite_flutter.dart';
@@ -6,6 +6,7 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:image/image.dart' as img;
 import 'package:MaisControl/report.dart';
+import 'package:MaisControl/IntroPanel.dart'; // Replace this with your actual import path
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,10 +23,10 @@ class MyApp extends StatelessWidget {
       title: 'Identify Pest',
       theme: ThemeData(primarySwatch: Colors.green),
       routes: {
-        '/intro': (context) => IntroPanel(),
+        '/intro': (context) => IntroPanel(), // Replace this with your IntroPanel route
         '/main': (context) => HomePage(
-              cameras: cameras,
-            ),
+          cameras: cameras,
+        ),
       },
       initialRoute: '/intro',
     );
@@ -36,16 +37,20 @@ class HomePage extends StatefulWidget {
   final List<CameraDescription> cameras;
   const HomePage({Key? key, required this.cameras}) : super(key: key);
   @override
-  _state createState() => _state();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _state extends State<HomePage> {
+class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
   late CameraController camController;
   late Future<void> initControlerFuture;
   late Interpreter interpreter;
   List<double> value = List<double>.filled(4, 0);
   String combinedText = "Capture";
   late String imagePath;
+
+  late AnimationController _controller;
+  late Animation<double> _scaleAnimation;
+
   @override
   void initState() {
     super.initState();
@@ -57,6 +62,21 @@ class _state extends State<HomePage> {
     initControlerFuture = camController.initialize();
 
     loadModel();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 300),
+    );
+
+    _scaleAnimation = Tween<double>(begin: 1, end: 0.95).animate(_controller);
+  }
+
+  @override
+  void dispose() {
+    interpreter.close();
+    camController.dispose();
+    _controller.dispose();
+    super.dispose();
   }
 
   loadModel() async {
@@ -129,81 +149,116 @@ class _state extends State<HomePage> {
     }
   }
 
-  @override
-  void dispose() {
-    interpreter.close();
-    camController.dispose();
-    super.dispose();
-  }
 
-  @override
-  Widget build(BuildContext context) {
-    double scrWidth = MediaQuery.of(context).size.width;
-    double scrHeight = MediaQuery.of(context).size.height;
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Identify Pest'),
-        centerTitle: true,
-      ),
-      body: FutureBuilder<void>(
-        future: initControlerFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return Stack(
-              children: [
-                SizedBox(
-                  width: scrWidth,
-                  height: scrHeight,
-                  child: AspectRatio(
-                    aspectRatio: camController.value.aspectRatio,
-                    child: CameraPreview(camController),
-                  ),
+
+@override
+Widget build(BuildContext context) {
+  double scrWidth = MediaQuery.of(context).size.width;
+  double scrHeight = MediaQuery.of(context).size.height;
+  return Scaffold(
+    appBar: AppBar(
+      title: const Text('Identify Pest'),
+      centerTitle: true,
+    ),
+    body: FutureBuilder<void>(
+      future: initControlerFuture,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          return Stack(
+            children: [
+              SizedBox(
+                width: scrWidth,
+                height: scrHeight,
+                child: AspectRatio(
+                  aspectRatio: camController.value.aspectRatio,
+                  child: CameraPreview(camController),
                 ),
-                Positioned(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          ElevatedButton(
-                            onPressed: () {
-                              captureImage().then((value) {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Report(
+              ),
+              Positioned(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        AnimatedBuilder(
+                          animation: _scaleAnimation,
+                          builder: (context, child) {
+                            return Transform.scale(
+                              scale: _scaleAnimation.value,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  _controller.forward().then((value) {
+                                    _controller.reverse();
+                                    captureImage().then((value) {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Report(
                                             pathImg: imagePath,
-                                            value: this.value)));
-                              });
-                            },
-                            child: const Text('Capture'),
-                          ),
-                          ElevatedButton(
-                            onPressed: () {
-                              pickImage().then((value) {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Report(
+                                            value: this.value,
+                                          ),
+                                        ),
+                                      );
+                                    });
+                                  });
+                                },
+                                child: const Text(
+                                  'Capture',
+                                  style: TextStyle(fontSize: 16), // Font size adjustment
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  fixedSize: Size(120, 40), // Set the desired button size
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                        AnimatedBuilder(
+                          animation: _scaleAnimation,
+                          builder: (context, child) {
+                            return Transform.scale(
+                              scale: _scaleAnimation.value,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  _controller.forward().then((value) {
+                                    _controller.reverse();
+                                    pickImage().then((value) {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Report(
                                             pathImg: imagePath,
-                                            value: this.value)));
-                              });
-                            },
-                            child: const Text('Gallery'),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                                            value: this.value,
+                                          ),
+                                        ),
+                                      );
+                                    });
+                                  });
+                                },
+                                child: const Text(
+                                  'Gallery',
+                                  style: TextStyle(fontSize: 16), // Font size adjustment
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  fixedSize: Size(120, 40), // Set the desired button size
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-              ],
-            );
-          } else {
-            return const Center(child: CircularProgressIndicator());
-          }
-        },
-      ),
-    );
-  }
+              ),
+            ],
+          );
+        } else {
+          return const Center(child: CircularProgressIndicator());
+        }
+      },
+    ),
+  );
+}
 }

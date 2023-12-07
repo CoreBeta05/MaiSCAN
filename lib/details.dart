@@ -907,6 +907,7 @@ class _MyStatefulWidgetState extends State<Details> {
       appBar: AppBar(
         title: Text('Control Management:'),
       ),
+      backgroundColor: Colors.yellow, 
       body: ListView(children: [
         info,
       ]),

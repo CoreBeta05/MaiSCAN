@@ -1,22 +1,48 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 import 'dart:io';
 import 'package:MaisControl/details.dart';
+import 'control_management.dart';
+import 'associated_damages.dart';
 
 class Report extends StatefulWidget {
   final String pathImg;
   final List<double> value;
-  const Report({super.key, required this.pathImg, required this.value});
+  const Report({Key? key, required this.pathImg, required this.value})
+      : super(key: key);
 
   @override
   State<Report> createState() => _ReportState();
 }
 
-class _ReportState extends State<Report> {
+class _ReportState extends State<Report> with TickerProviderStateMixin {
   late Widget content;
+  late Widget det;
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  int index1 = 0;
 
   @override
   void initState() {
     super.initState();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 500),
+    );
+
+    _animation = Tween<double>(begin: 0, end: 2).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeInOut,
+      ),
+    )..addListener(() {
+        setState(() {});
+      });
+
+    _controller.repeat(reverse: true);
+
     setState(() {
       List<String> className = [
         'Army_worm',
@@ -30,7 +56,7 @@ class _ReportState extends State<Report> {
         'White_grub'
       ];
       double base_val = widget.value[0];
-      int index1 = 0;
+
 
       for (int i = 0; i < widget.value.length; i++) {
         if (widget.value[i] > base_val) {
@@ -39,46 +65,69 @@ class _ReportState extends State<Report> {
         }
       }
 
-      String text;
-      double r = (widget.value[index1] * 255.0);
-      double g = (255.0 - (widget.value[index1] * 255.0));
-      Color color = Color.fromRGBO(r.toInt(), g.toInt(), r.toInt(), 1.0);
-
-      if (widget.value[index1] <= 0.89) {
-        text = "\nUndefined!\n Please capture or load the image again.!";
+      String text1 = '';
+      if (widget.value[index1] <= 0.9) {
         content = Text(
-          text,
+          "\nUndefined!\n Please capture or load the image again!",
           textAlign: TextAlign.center,
           style: TextStyle(
             fontFamily: 'New Times Roman',
             fontStyle: FontStyle.normal,
-            fontSize: 18,
-            color: Colors.red, // You can set the text color
+            fontSize: 20,
+            color: Colors.red,
+          ),
+        );
+        det = Text(
+          "\nThis app is intended for identifying corn pest!\n Please click the camera button again. Thank you!",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontFamily: 'New Times Roman',
+            fontStyle: FontStyle.normal,
+            fontSize: 20,
+            color: Colors.red,
           ),
         );
       } else {
-        text = className[index1];
-        content = ElevatedButton(
-          onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => Details(index: index1)));
+        text1 = 'Click the buttons for further information!';
+        det = Text(
+          text1,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontFamily: 'New Times Roman',
+            fontStyle: FontStyle.normal,
+            fontSize: 20,
+          ),
+        );
+        String text = className[index1];
+        content = AnimatedBuilder(
+          animation: _animation,
+          builder: (BuildContext context, Widget? child) {
+            return Transform.translate(
+              offset: Offset(0, _animation.value),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => Details(index: index1)));
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue, // Change the color if needed
+                  onPrimary: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25.0),
+                  ),
+                ),
+                child: Text(
+                  text,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontFamily: 'New Times Roman',
+                    fontStyle: FontStyle.normal,
+                    fontSize: 18, // Updated font size here
+                  ),
+                ),
+              ),
+            );
           },
-          style: ElevatedButton.styleFrom(
-            primary: color, // Use the color as the button's background color
-            onPrimary: Colors.white, // Text color
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(25.0), // Rounded corners
-            ),
-          ),
-          child: Text(
-            text,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontFamily: 'New Times Roman',
-              fontStyle: FontStyle.normal,
-              fontSize: 16,
-            ),
-          ),
         );
       }
     });
@@ -90,17 +139,56 @@ class _ReportState extends State<Report> {
       appBar: AppBar(
         title: const Text("Identification Result:"),
         leading: IconButton(
-          icon: Icon(Icons.camera_alt), // Use the camera icon
+          icon: Icon(Icons.camera_alt),
           onPressed: () {
-            // Define the action when the camera button is pressed (e.g., navigate back).
+            
             Navigator.of(context).pop();
           },
         ),
       ),
+      backgroundColor: Colors.yellow,
       body: ListView(
         children: [
           Image.file(File(widget.pathImg)),
-          content,
+          SizedBox(height: 20),
+          Transform.translate(
+            offset: Offset(0, _animation.value),
+            child: content,
+          ),
+          det,
+          SizedBox(height: 20),
+          if (widget.value[index1] > 0.9)
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => ControlManagementPage(index: index1),
+                ));
+              },
+              child: Text(
+                'Control Management',
+                style: TextStyle(
+                  fontSize: 18, // Updated font size here
+                  fontFamily: 'New Times Roman',
+                  fontStyle: FontStyle.normal,
+                ),
+              ),
+            ),
+          if (widget.value[index1] > 0.9)
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => AssociatedDamagesPage(index: index1),
+                ));
+              },
+              child: Text(
+                'Associated Damages',
+                style: TextStyle(
+                  fontSize: 18, // Updated font size here
+                  fontFamily: 'New Times Roman',
+                  fontStyle: FontStyle.normal,
+                ),
+              ),
+            ),
         ],
       ),
     );
