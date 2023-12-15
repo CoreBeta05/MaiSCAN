@@ -36,7 +36,7 @@ class _IntroPanelState extends State<IntroPanel> {
              ),
               backgroundColor: Colors.green, // Change app bar color to green
               ), 
-              backgroundColor: Colors.yellow,
+              backgroundColor: Colors.white,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

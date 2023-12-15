@@ -1,8 +1,8 @@
-# Road Damage Reporting Tool
+# MaisControl
 
 A flutter project for thesis requirement
 
 ## Installation
 Download the latest apk from the release page.
-https://github.com/LydianJay/Road-Damage-Detection/releases
+https://github.com/CoreBeta05/MaiSCAN/releases
 

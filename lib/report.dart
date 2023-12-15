@@ -110,7 +110,7 @@ class _ReportState extends State<Report> with TickerProviderStateMixin {
                       builder: (context) => Details(index: index1)));
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.blue, // Change the color if needed
+                  primary: Colors.green, // Change the color if needed
                   onPrimary: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(25.0),
@@ -146,7 +146,7 @@ class _ReportState extends State<Report> with TickerProviderStateMixin {
           },
         ),
       ),
-      backgroundColor: Colors.yellow,
+      backgroundColor: Colors.white,
       body: ListView(
         children: [
           Image.file(File(widget.pathImg)),
