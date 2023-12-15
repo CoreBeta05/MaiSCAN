@@ -15,14 +15,14 @@ class _AssociatedDamagesPageState extends State<AssociatedDamagesPage> {
   late TextStyle customTextStyle; // Declare customTextStyle
 
     final TextStyle commonTextStyle = TextStyle(
-    color: Colors.black, // Change the text color
+    color: Colors.white, // Change the text color
     fontSize: 24, // Change the font size
     fontFamily: 'TimesNewRoman', // Change the font family
     fontWeight: FontWeight.bold, // Change the font weight
   );
 
       final TextStyle commonTextStyle2 = TextStyle(
-    color: Colors.black, // Change the text color
+    color: Colors.white, // Change the text color
     fontSize: 22, // Change the font size
     fontFamily: 'TimesNewRoman', // Change the font family
     fontWeight: FontWeight.normal, // Change the font weight
@@ -234,22 +234,40 @@ class _AssociatedDamagesPageState extends State<AssociatedDamagesPage> {
   }
 
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Associated Damages'),
-      ),
-      backgroundColor: Colors.white, // Set the background color here
-      body: ListView(
-        children: [
-          // Use the initialized assdet widget
-          Padding(
-            padding: EdgeInsets.all(16.0),
-            child: assdet,
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      title: Text('Associated Damages'),
+    ),
+    backgroundColor: Colors.transparent, // Set the background color to transparent
+    body: Stack(
+      fit: StackFit.expand,
+      children: [
+        // Background image
+        Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/back3.jpg'), // Replace with your image path
+              fit: BoxFit.cover, // Make the image cover the entire screen
+              colorFilter: ColorFilter.mode(
+                Colors.black.withOpacity(0.3), // Adjust the opacity here
+                BlendMode.dstATop, // Choose the blend mode as needed
+              ),
+            ),
           ),
-        ],
-      ),
-    );
-  }
+        ),
+        ListView(
+          children: [
+            // Use the initialized assdet widget
+            Padding(
+              padding: EdgeInsets.all(16.0),
+              child: assdet,
+            ),
+          ],
+        ),
+      ],
+    ),
+  );
+}
 }

@@ -28,57 +28,69 @@ class _IntroPanelState extends State<IntroPanel> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-            title: Text(
-                'MaisControl',
-               style: TextStyle(
-                  fontSize: 24, // Adjust the font size of the title
-               ),
-             ),
-              backgroundColor: Colors.green, // Change app bar color to green
-              ), 
-              backgroundColor: Colors.white,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Welcome to the MaisControl App',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+        title: Text(
+          'MaisControl',
+          style: TextStyle(
+            fontSize: 24, // Adjust the font size of the title
+          ),
+        ),
+        backgroundColor: Colors.green, // Change app bar color to green
+      ),
+      backgroundColor: Colors.transparent, // Set Scaffold background to transparent
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/back2.png'), // Replace with your image asset path
+            fit: BoxFit.cover, // Adjust to cover the whole screen
+            colorFilter: ColorFilter.mode(
+              Colors.black.withOpacity(0.3), // Adjust the opacity here (0.0 - 1.0)
+              BlendMode.dstATop,
             ),
-            SizedBox(height: 20),
-            Text(
-              'Disclaimer!\n    This app is not designed for identifying undefined objects but rather specializes in identifying corn pests.',
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.red, // Change text color to red
-              ),
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: 20),
-            // Wrap the ElevatedButton in an AnimatedContainer with a shake effect
-            AnimatedContainer(
-              duration: Duration(milliseconds: 500),
-              transform: _isShaking ? Matrix4.rotationZ(0.1) : Matrix4.rotationZ(0),
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/main'); // Navigate to '/main' screen
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.green[900], // Change button color to dark green
-                ),
-                child: Text(
-                 'Start App',
-                 style: TextStyle(
-                   fontSize: 18, // Change the font size here
-                 ),
+          ),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Welcome to the MaisControl App',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
                 ),
               ),
-            ),
-          ],
-
+              SizedBox(height: 20),
+              Text(
+                'Disclaimer!\n    This app is not designed for identifying undefined objects but rather specializes in identifying corn pests.',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.red, // Change text color to red
+                ),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 20),
+              // Wrap the ElevatedButton in an AnimatedContainer with a shake effect
+              AnimatedContainer(
+                duration: Duration(milliseconds: 500),
+                transform: _isShaking ? Matrix4.rotationZ(0.1) : Matrix4.rotationZ(0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/main'); // Navigate to '/main' screen
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.green[900], // Change button color to dark green
+                  ),
+                  child: Text(
+                    'Start App',
+                    style: TextStyle(
+                      fontSize: 18, // Change the font size here
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

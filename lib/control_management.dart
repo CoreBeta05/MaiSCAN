@@ -9,23 +9,23 @@ class ControlManagementPage extends StatefulWidget {
   @override
   _ControlManagementPageState createState() => _ControlManagementPageState();
 }
-  
+
 class _ControlManagementPageState extends State<ControlManagementPage> {
   late Widget condet;
-  late TextStyle customTextStyle; // Add this line
+  late TextStyle customTextStyle;
 
-    final TextStyle commonTextStyle = TextStyle(
-    color: Colors.black, // Change the text color
-    fontSize: 22, // Change the font size
-    fontFamily: 'TimesNewRoman', // Change the font family
-    fontWeight: FontWeight.bold, // Change the font weight
+  final TextStyle commonTextStyle = TextStyle(
+    color: Colors.white,
+    fontSize: 22,
+    fontFamily: 'TimesNewRoman',
+    fontWeight: FontWeight.bold,
   );
 
-    final TextStyle commonTextStyle2 = TextStyle(
-    color: Colors.black, // Change the text color
-    fontSize: 20, // Change the font size
-    fontFamily: 'TimesNewRoman', // Change the font family
-    fontWeight: FontWeight.normal, // Change the font weight
+  final TextStyle commonTextStyle2 = TextStyle(
+    color: Colors.white,
+    fontSize: 20,
+    fontFamily: 'TimesNewRoman',
+    fontWeight: FontWeight.normal,
   );
 
   @override
@@ -324,6 +324,10 @@ class _ControlManagementPageState extends State<ControlManagementPage> {
                   "\n NO PEST",
                   style: commonTextStyle,
                 ),
+                Text(
+                  "\n Video link below!"
+                  , style: commonTextStyle2,
+                ),
                 GestureDetector(
                   onTap: () {
                     const url =
@@ -353,6 +357,10 @@ class _ControlManagementPageState extends State<ControlManagementPage> {
                 Text(
                   "\n Control Management: \n",
                   style: commonTextStyle,
+                ),
+                Text(
+                  "\n Video link below!"
+                  , style: commonTextStyle2,
                 ),
                 GestureDetector(
                   onTap: () {
@@ -438,6 +446,10 @@ class _ControlManagementPageState extends State<ControlManagementPage> {
                   "\n Control Management:",
                   style: commonTextStyle,
                 ),
+                Text(
+                  "\n Video link below!"
+                  , style: commonTextStyle2,
+                ),
                 GestureDetector(
                   onTap: () {
                     const url =
@@ -508,6 +520,10 @@ class _ControlManagementPageState extends State<ControlManagementPage> {
                   "\n Control Management:",
                   style: commonTextStyle,
                 ),
+                Text(
+                  "\n Video link below!"
+                  , style: commonTextStyle2,
+                ),
                 GestureDetector(
                   onTap: () {
                     const url =
@@ -550,6 +566,10 @@ class _ControlManagementPageState extends State<ControlManagementPage> {
         Text(
                   "\n Control Management:",
                   style: commonTextStyle,
+                ),
+                Text(
+                  "\n Video link below!"
+                  , style: commonTextStyle2,
                 ),
                 GestureDetector(
                   onTap: () {
@@ -627,20 +647,33 @@ class _ControlManagementPageState extends State<ControlManagementPage> {
   }
 
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Control Management:'),
       ),
-      backgroundColor: Colors.white,
-      body: ListView(
-        children: [
-          Padding(
-            padding: EdgeInsets.all(16.0),
-            child: condet,
+      backgroundColor: Colors.transparent, // Set scaffold's background to transparent
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/back3.jpg'), // Replace with your image asset path
+            fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(
+              Colors.black.withOpacity(0.3), // Adjust the opacity here (0.0 to 1.0)
+              BlendMode.darken,
+            ),
           ),
-        ],
+        ),
+        child: ListView(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(16.0),
+              child: condet,
+            ),
+          ],
+        ),
       ),
     );
   }

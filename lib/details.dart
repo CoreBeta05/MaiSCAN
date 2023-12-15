@@ -4,7 +4,8 @@ import 'package:url_launcher/url_launcher.dart'; // Import the url_launcher pack
 class Details extends StatefulWidget {
   final int index;
 
-  const Details({super.key, required this.index});
+  const Details({Key? key, required this.index}) : super(key: key);
+
   @override
   State createState() => _MyStatefulWidgetState();
 }
@@ -13,14 +14,14 @@ class _MyStatefulWidgetState extends State<Details> {
   late Widget info;
 
   final TextStyle commonTextStyle = TextStyle(
-    color: Colors.black, // Change the text color
+    color: Colors.white, // Change the text color
     fontSize: 18, // Change the font size
     fontFamily: 'TimesNewRoman', // Change the font family
     fontWeight: FontWeight.bold, // Change the font weight
   );
 
-    final TextStyle commonTextStyle2 = TextStyle(
-    color: Colors.black, // Change the text color
+  final TextStyle commonTextStyle2 = TextStyle(
+    color: Colors.white, // Change the text color
     fontSize: 18, // Change the font size
     fontFamily: 'TimesNewRoman', // Change the font family
     fontWeight: FontWeight.normal, // Change the font weight
@@ -54,7 +55,7 @@ class _MyStatefulWidgetState extends State<Details> {
                   child: image,
                 ),
                 Text(
-                    "\n References: Regional Crop Protection Center Caraga                      "),
+                    "\n References: Regional Crop Protection Center Caraga                      ",style:commonTextStyle2,),
                 GestureDetector(
                   onTap: () {
                     const url =
@@ -96,7 +97,7 @@ class _MyStatefulWidgetState extends State<Details> {
                   child: image,
                 ),
                 Text(
-                    "\n References: Regional Crop Protection Center Caraga                      "),
+                    "\n References: Regional Crop Protection Center Caraga                      ",style:commonTextStyle2,),
                 GestureDetector(
                   onTap: () {
                     const url =
@@ -107,6 +108,7 @@ class _MyStatefulWidgetState extends State<Details> {
                     'Department of Agriculture. Common Insect Pest and Diseases of\n Corn. ',
                     style: TextStyle(
                       color: Colors.blue, // Change the text color to blue
+                      fontSize: 18,
                       decoration:
                           TextDecoration.underline, // Add underline to the text
                     ),
@@ -139,7 +141,7 @@ class _MyStatefulWidgetState extends State<Details> {
                 ),
 
                 Text(
-                    " References: Regional Crop Protection Center Caraga                      "),
+                    " References: Regional Crop Protection Center Caraga                      ",style:commonTextStyle2,),
                 GestureDetector(
                   onTap: () {
                     const url =
@@ -150,6 +152,7 @@ class _MyStatefulWidgetState extends State<Details> {
                     'Department of Agriculture. Common Insect Pest and Diseases of\n Corn. ',
                     style: TextStyle(
                       color: Colors.blue, // Change the text color to blue
+                      fontSize:18,
                       decoration:
                           TextDecoration.underline, // Add underline to the text
                     ),
@@ -180,7 +183,7 @@ class _MyStatefulWidgetState extends State<Details> {
                   height: 250, // Adjust the height as needed
                   child: image,
                 ),
-                Text( " References: Regional Crop Protection Center Caraga                      "),
+                Text( " References: Regional Crop Protection Center Caraga                      ", style:commonTextStyle2,),
                 GestureDetector(
                   onTap: () {
                     const url =
@@ -191,6 +194,7 @@ class _MyStatefulWidgetState extends State<Details> {
                     'Department of Agriculture. Common Insect Pest and Diseases of\n Corn. ',
                     style: TextStyle(
                       color: Colors.blue, // Change the text color to blue
+                      fontSize:18,
                       decoration:
                           TextDecoration.underline, // Add underline to the text
                     ),
@@ -210,7 +214,7 @@ class _MyStatefulWidgetState extends State<Details> {
                   "\n NO PEST",
                   style: commonTextStyle,
                 ),
-                Text(" Good job! Maintain your healthy corn. \n"),
+                Text(" Good job! Maintain your healthy corn. \n", style:commonTextStyle2,),
                 // Display the image
                 Container(
                   width: 250, // Adjust the width as needed
@@ -227,6 +231,7 @@ class _MyStatefulWidgetState extends State<Details> {
                     '\nHow to maintain healthy corn?',
                     style: TextStyle(
                       color: Colors.blue, // Change the text color to blue
+                      fontSize:18,
                       decoration:
                           TextDecoration.underline, // Add underline to the text
                     ),
@@ -260,7 +265,7 @@ class _MyStatefulWidgetState extends State<Details> {
                 ),
                 
                 Text(
-                    " References: Regional Crop Protection Center Caraga                      "),
+                    " References: Regional Crop Protection Center Caraga                      ",style:commonTextStyle2,),
                 GestureDetector(
                   onTap: () {
                     const url =
@@ -271,6 +276,7 @@ class _MyStatefulWidgetState extends State<Details> {
                     'Department of Agriculture. Common Insect Pest and Diseases of\n Corn. ',
                     style: TextStyle(
                       color: Colors.blue, // Change the text color to blue
+                      fontSize:18,
                       decoration:
                           TextDecoration.underline, // Add underline to the text
                     ),
@@ -304,7 +310,7 @@ class _MyStatefulWidgetState extends State<Details> {
                 ),
 
                 Text(
-                    " References: Regional Crop Protection Center Caraga                      "),
+                    " References: Regional Crop Protection Center Caraga                      ",style:commonTextStyle2),
                 GestureDetector(
                   onTap: () {
                     const url =
@@ -314,7 +320,8 @@ class _MyStatefulWidgetState extends State<Details> {
                   child: Text(
                     'Department of Agriculture. Common Insect Pest and Diseases of\n Corn. ',
                     style: TextStyle(
-                      color: Colors.blue, // Change the text color to blue
+                      color: Colors.blue,
+                      fontSize:18, // Change the text color to blue
                       decoration:
                           TextDecoration.underline, // Add underline to the text
                     ),
@@ -345,7 +352,7 @@ class _MyStatefulWidgetState extends State<Details> {
                 ),
                 Text(
 
-                    " References: Regional Crop Protection Center Caraga                      "),
+                    " References: Regional Crop Protection Center Caraga                      ",style:commonTextStyle2,),
                 GestureDetector(
                   onTap: () {
                     const url =
@@ -356,6 +363,7 @@ class _MyStatefulWidgetState extends State<Details> {
                     'Department of Agriculture. Common Insect Pest and Diseases of\n Corn. ',
                     style: TextStyle(
                       color: Colors.blue, // Change the text color to blue
+                      fontSize:18,
                       decoration:
                           TextDecoration.underline, // Add underline to the text
                     ),
@@ -386,7 +394,7 @@ class _MyStatefulWidgetState extends State<Details> {
                 ),
 
                 Text(
-                    " References: Regional Crop Protection Center Caraga                      "),
+                    " References: Regional Crop Protection Center Caraga                      ", style:commonTextStyle2,),
                 GestureDetector(
                   onTap: () {
                     const url =
@@ -397,6 +405,7 @@ class _MyStatefulWidgetState extends State<Details> {
                     'Department of Agriculture. Common Insect Pest and Diseases of\n Corn. ',
                     style: TextStyle(
                       color: Colors.blue, // Change the text color to blue
+                      fontSize:18,
                       decoration:
                           TextDecoration.underline, // Add underline to the text
                     ),
@@ -407,7 +416,7 @@ class _MyStatefulWidgetState extends State<Details> {
           }
           break;
       }
-    });
+  });
   }
 
   @override
@@ -416,10 +425,28 @@ class _MyStatefulWidgetState extends State<Details> {
       appBar: AppBar(
         title: Text('Control Management:'),
       ),
-      backgroundColor: Colors.white, 
-      body: ListView(children: [
-        info,
-      ]),
+      backgroundColor: Colors.transparent, // Set background color to transparent
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: Opacity(
+              opacity: 0.3, // Change opacity here (0.0 to 1.0)
+              child: Image.asset(
+                'assets/back3.jpg', // Replace with your image path
+                fit: BoxFit.cover, // Ensure the image covers the whole screen
+              ),
+            ),
+          ),
+          ListView(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: info,
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

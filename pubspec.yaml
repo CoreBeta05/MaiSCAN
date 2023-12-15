@@ -82,6 +82,10 @@ flutter:
     - assets/semildam.png
     - assets/sbugsdam.png
     - assets/wgrubdam.png
+    - assets/back2.png
+    - assets/back1.jpg
+    - assets/back3.jpg
+
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

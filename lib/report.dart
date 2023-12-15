@@ -96,6 +96,7 @@ class _ReportState extends State<Report> with TickerProviderStateMixin {
             fontFamily: 'New Times Roman',
             fontStyle: FontStyle.normal,
             fontSize: 20,
+            color: Colors.white,
           ),
         );
         String text = className[index1];
@@ -141,55 +142,66 @@ class _ReportState extends State<Report> with TickerProviderStateMixin {
         leading: IconButton(
           icon: Icon(Icons.camera_alt),
           onPressed: () {
-            
+
             Navigator.of(context).pop();
           },
         ),
       ),
-      backgroundColor: Colors.white,
-      body: ListView(
-        children: [
-          Image.file(File(widget.pathImg)),
-          SizedBox(height: 20),
-          Transform.translate(
-            offset: Offset(0, _animation.value),
-            child: content,
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/back1.jpg'),
+            fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(
+              Colors.black.withOpacity(0.3), // Change opacity here (0.0 - 1.0)
+              BlendMode.darken, // Change blend mode as needed
+            ),
           ),
-          det,
-          SizedBox(height: 20),
-          if (widget.value[index1] > 0.9)
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => ControlManagementPage(index: index1),
-                ));
-              },
-              child: Text(
-                'Control Management',
-                style: TextStyle(
-                  fontSize: 18, // Updated font size here
-                  fontFamily: 'New Times Roman',
-                  fontStyle: FontStyle.normal,
+        ),
+        child: ListView(
+          children: [
+            Image.file(File(widget.pathImg)),
+            SizedBox(height: 20),
+            Transform.translate(
+              offset: Offset(0, _animation.value),
+              child: content,
+            ),
+            det,
+            SizedBox(height: 20),
+            if (widget.value[index1] > 0.9)
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ControlManagementPage(index: index1),
+                  ));
+                },
+                child: Text(
+                  'Control Management',
+                  style: TextStyle(
+                    fontSize: 18, // Updated font size here
+                    fontFamily: 'New Times Roman',
+                    fontStyle: FontStyle.normal,
+                  ),
                 ),
               ),
-            ),
-          if (widget.value[index1] > 0.9)
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => AssociatedDamagesPage(index: index1),
-                ));
-              },
-              child: Text(
-                'Associated Damages',
-                style: TextStyle(
-                  fontSize: 18, // Updated font size here
-                  fontFamily: 'New Times Roman',
-                  fontStyle: FontStyle.normal,
+            if (widget.value[index1] > 0.9)
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => AssociatedDamagesPage(index: index1),
+                  ));
+                },
+                child: Text(
+                  'Associated Damages',
+                  style: TextStyle(
+                    fontSize: 18, // Updated font size here
+                    fontFamily: 'New Times Roman',
+                    fontStyle: FontStyle.normal,
+                  ),
                 ),
               ),
-            ),
-        ],
+          ],
+        ),
       ),
     );
   }
