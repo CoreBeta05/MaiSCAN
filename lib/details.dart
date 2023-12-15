@@ -105,7 +105,7 @@ class _MyStatefulWidgetState extends State<Details> {
                     launch(url);
                   },
                   child: Text(
-                    'Department of Agriculture. Common Insect Pest and Diseases of\n Corn. ',
+                    'Department of Agriculture. Common Insect Pest and Diseases of Corn. ',
                     style: TextStyle(
                       color: Colors.blue, // Change the text color to blue
                       fontSize: 18,
@@ -149,7 +149,7 @@ class _MyStatefulWidgetState extends State<Details> {
                     launch(url);
                   },
                   child: Text(
-                    'Department of Agriculture. Common Insect Pest and Diseases of\n Corn. ',
+                    'Department of Agriculture. Common Insect Pest and Diseases of Corn. ',
                     style: TextStyle(
                       color: Colors.blue, // Change the text color to blue
                       fontSize:18,
@@ -191,7 +191,7 @@ class _MyStatefulWidgetState extends State<Details> {
                     launch(url);
                   },
                   child: Text(
-                    'Department of Agriculture. Common Insect Pest and Diseases of\n Corn. ',
+                    'Department of Agriculture. Common Insect Pest and Diseases of Corn. ',
                     style: TextStyle(
                       color: Colors.blue, // Change the text color to blue
                       fontSize:18,
@@ -273,7 +273,7 @@ class _MyStatefulWidgetState extends State<Details> {
                     launch(url);
                   },
                   child: Text(
-                    'Department of Agriculture. Common Insect Pest and Diseases of\n Corn. ',
+                    'Department of Agriculture. Common Insect Pest and Diseases of Corn. ',
                     style: TextStyle(
                       color: Colors.blue, // Change the text color to blue
                       fontSize:18,
@@ -318,7 +318,7 @@ class _MyStatefulWidgetState extends State<Details> {
                     launch(url);
                   },
                   child: Text(
-                    'Department of Agriculture. Common Insect Pest and Diseases of\n Corn. ',
+                    'Department of Agriculture. Common Insect Pest and Diseases of Corn. ',
                     style: TextStyle(
                       color: Colors.blue,
                       fontSize:18, // Change the text color to blue
@@ -402,7 +402,7 @@ class _MyStatefulWidgetState extends State<Details> {
                     launch(url);
                   },
                   child: Text(
-                    'Department of Agriculture. Common Insect Pest and Diseases of\n Corn. ',
+                    'Department of Agriculture. Common Insect Pest and Diseases of Corn. ',
                     style: TextStyle(
                       color: Colors.blue, // Change the text color to blue
                       fontSize:18,

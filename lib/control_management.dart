@@ -233,7 +233,7 @@ class _ControlManagementPageState extends State<ControlManagementPage> {
                     launch(url);
                   },
                   child: Text(
-                    'c. make small trenches around the field and fill with cut grasses in the morning. these will serve as shade where the larvae can hide during the day to avoid the heat of the sun. the hiding larvae\n can then be collected in the early morning of the next day. ',
+                    'c. make small trenches around the field and fill with cut grasses in the morning. these will serve as shade where the larvae can hide during the day to avoid the heat of the sun. the hiding larvae can then be collected in the early morning of the next day. ',
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.blue, // Change the text color to blue
@@ -531,7 +531,7 @@ class _ControlManagementPageState extends State<ControlManagementPage> {
                     launch(url);
                   },
                   child: Text(
-                    'a. Insecticide control. Many insecticides in the pyrethroid class are\n effective for brown stink bug in corn. However, bifenthrin is the most\n effective both because it can be applied at a rate that contains\n more active ingredient than other pyrethroids and because it is\n more toxic to brown stink bugs. Expect only a week residual.',
+                    'a. Insecticide control. Many insecticides in the pyrethroid class are effective for brown stink bug in corn. However, bifenthrin is the most effective both because it can be applied at a rate that contains\n more active ingredient than other pyrethroids and because it is more toxic to brown stink bugs. Expect only a week residual.',
                     style: TextStyle(
                       fontSize:20,
                       color: Colors.blue, // Change the text color to blue
@@ -606,7 +606,7 @@ class _ControlManagementPageState extends State<ControlManagementPage> {
                     launch(url);
                   },
                   child: Text(
-                    'c. Incorporate corn stubbles and stalks in the soil during plowing.\n These will serve as alternate food for the white grubs instead of\n the corn roots.',
+                    'c. Incorporate corn stubbles and stalks in the soil during plowing. These will serve as alternate food for the white grubs instead of the corn roots.',
                     style: TextStyle(
                       fontSize:20,
                       color: Colors.blue, // Change the text color to blue
@@ -634,7 +634,7 @@ class _ControlManagementPageState extends State<ControlManagementPage> {
                     launch(url);
                   },
                   child: Text(
-                    'e. Some cultural control techniques such as crop rotation,\n weed control, mid-season plowing, and pasturing hogs on infested\n fields may provide partial control of white grubs.',
+                    'e. Some cultural control techniques such as crop rotation, weed control, mid-season plowing, and pasturing hogs on infested fields may provide partial control of white grubs.',
                     style: TextStyle(
                       fontSize:20,
                       color: Colors.blue, // Change the text color to blue
