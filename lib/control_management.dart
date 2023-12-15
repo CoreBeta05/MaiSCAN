@@ -662,7 +662,7 @@ class _ControlManagementPageState extends State<ControlManagementPage> {
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
               Colors.black.withOpacity(0.3), // Adjust the opacity here (0.0 to 1.0)
-              BlendMode.darken,
+              BlendMode.dstATop,
             ),
           ),
         ),

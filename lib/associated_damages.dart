@@ -175,7 +175,7 @@ class _AssociatedDamagesPageState extends State<AssociatedDamagesPage> {
                   style: commonTextStyle,
                 ),
                 Text(
-                    "    Leaf blades of younger plants eaten up with only the midrib and\n parallel viens left. Corn silk cut. ",style: commonTextStyle2),
+                    "    Leaf blades of younger plants eaten up with only the midrib and parallel viens left. Corn silk cut. ",style: commonTextStyle2),
                 Container(
                   width: 250, // Adjust the width as needed
                   height: 250, // Adjust the height as needed
